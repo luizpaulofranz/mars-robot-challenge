@@ -1,5 +1,6 @@
 # Mars Robot
 [![Maintainability](https://api.codeclimate.com/v1/badges/189e4ccd4551f3a94cde/maintainability)](https://codeclimate.com/github/luizpaulofranz/mars-robot-challenge/maintainability)
+
 Mars Robot Code Challenge. In this challange, we have an Rest API, developed with **Java 8 + Spring**, in which we have only one endpoint at all:
 ```
 POST to http://localhost:8080/rest/mars/${MYPARAM}

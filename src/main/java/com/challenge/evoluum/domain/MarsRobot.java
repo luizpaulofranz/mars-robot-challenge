@@ -1,23 +1,41 @@
+/**
+ * This class contains the mars robot abstraction with all possible movements.
+ * 
+ * @author Luiz P. Franz
+ */
+
 package com.challenge.evoluum.domain;
 
-import org.springframework.stereotype.Component;
-
+import com.challenge.evoluum.domain.exceptions.CommandInvalidExcpetion;
 import com.challenge.evoluum.domain.exceptions.OutOfBorderExcpetion;
 
-@Component
-public class Mars {
+public class MarsRobot {
 	
+	/**
+	 * Current robot position.
+	 */
 	private Position currentPosition;
+	/**
+	 * Terrein limits.
+	 */
 	private final int LIMIT_WEST = 0;
 	private final int LIMIT_EAST = 4;
 	private final int LIMIT_NORTH = 4;
 	private final int LIMIT_SOUTH = 0;
 
-	public Mars() {
+	public MarsRobot() {
 		this.currentPosition = new Position(0, 0, 'N');
 	}
 	
-	public Position moveCommand(String command) throws OutOfBorderExcpetion {
+	/**
+	 * Here we pass an command input which will made the robot moves. This is our entry movement point.
+	 * 
+	 * @param String - command
+	 * @return Position - The robot position.
+	 * @throws OutOfBorderExcpetion - if robot goes out of terrain limits.
+	 * @throws CommandInvalidExcpetion - if command String has invalid commands.
+	 */
+	public Position moveCommand(String command) throws OutOfBorderExcpetion, CommandInvalidExcpetion {
 		
 		for (int i = 0; i < command.length(); i++) {
 			switch (command.charAt(i)) {
@@ -31,7 +49,7 @@ public class Mars {
 				this.move(1);
 				break;
 			default:
-				break;
+				throw new CommandInvalidExcpetion();
 			}
 		}
 		
@@ -128,4 +146,13 @@ public class Mars {
 			throw new OutOfBorderExcpetion();
 		}
 	}
+
+	public Position getCurrentPosition() {
+		return currentPosition;
+	}
+
+	public void setCurrentPosition(Position currentPosition) {
+		this.currentPosition = currentPosition;
+	}
+	
 }

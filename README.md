@@ -6,11 +6,13 @@ Mars Robot Code Challenge. In this challange, we have an Rest API, developed wit
 POST to http://localhost:8080/rest/mars/${MYPARAM}
 ```
 Where `${MYPARAM}` is a string containing the ***movements commands*** to our robot. Are valid commands:
+
 | Command | Action |
 | ------- | ------ |
 | M | Moves robot foward |
 | R | Turns robot right |
 | L | Turns robot left |
+
 
 **Any othe charactere is not recognized by our robot, and will results in error!**
 ## Mars Terrain
